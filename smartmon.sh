@@ -11,17 +11,17 @@
 # https://github.com/mvdan/sh
 
 SMARTCTL=`which smartctl`
-#FORCED_DEVICE_LIST=$(cat << EOF
-#/dev/sg3|scsi
-#/dev/sg4|sat
-#/dev/sg5|sat
-#/dev/sg6|sat
-#/dev/sg7|scsi
-#/dev/sg8|sat
-#/dev/sg9|sat
-#/dev/sdc|sat
-#EOF
-#)
+FORCED_DEVICE_LIST=$(cat << EOF
+/dev/ada0|atacam
+/dev/ada1|atacam
+/dev/ada2|atacam
+/dev/ada3|atacam
+/dev/da0|sat
+/dev/da1|sat
+/dev/da2|sat
+/dev/da3|sat
+EOF
+)
 
 parse_smartctl_attributes_awk="$(
   cat <<'SMARTCTLAWK'
