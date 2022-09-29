@@ -138,7 +138,7 @@ parse_smartctl_info() {
     Device_Model) device_model="${info_value}" ;;
     Serial_[Nn]umber) serial_number="${info_value}" ;;
     Firmware_Version) fw_version="${info_value}" ;;
-    User_Capacity) size="$(echo ${info_value} | sed 's/^[ ]*//' | awk '{printf $1}' | sed 's/[[:space:]]//g' | awk '{printf "%d GB\n", $1/1024/1024/1024}')" ;;
+    User_Capacity) size="$(echo ${info_value} | sed 's/^[ ]*//' | cut -f1 -db | sed 's/[^0-9]//g' | awk '{printf "%d GB\n", $1/1024/1024/1024}')" ;;
     Vendor) vendor="${info_value}" ;;
     Product) product="${info_value}" ;;
     Revision) revision="${info_value}" ;;
